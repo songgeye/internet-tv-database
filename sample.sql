@@ -14,6 +14,13 @@ INSERT INTO programs (title, description, is_series) VALUES
 ('NHKニュース7',   '国内外の最新ニュースをお届けするニュース番組',        0),
 ('ワールドカップ特集', 'サッカーワールドカップの試合をお届けするスポーツ番組', 0);
 
+INSERT INTO channels (name, description) VALUES
+('アニメch',   'アニメ専門チャンネル'),
+('ドラマch',   '国内外のドラマを24時間放送'),
+('映画・無料', '人気映画を無料でお届け'),
+('ニュースch', '最新ニュースを随時お届け'),
+('スポーツch', 'スポーツ中継・ハイライト専門チャンネル');
+
 INSERT INTO program_genres (program_id, genre_id) VALUES
 (1, 1), -- 鬼滅の刃 → アニメ
 (2, 1), -- 進撃の巨人 → アニメ
@@ -43,13 +50,6 @@ INSERT INTO episodes (season_id, episode_number, title, description, duration_se
 (5, 2,    '第2話',              '半沢の調査が佳境に入り衝撃の事実が明らかに',   2700, '2013-07-14', 210000),
 (6, NULL, '2026年5月10日放送',  '本日の国内外主要ニュース',                     1800, '2026-05-10',  80000),
 (7, NULL, '決勝戦ハイライト',   'ワールドカップ決勝戦の全ゴールをお届け',       3600, '2026-05-09', 300000);
-
-INSERT INTO channels (name, description) VALUES
-('アニメch',   'アニメ専門チャンネル'),
-('ドラマch',   '国内外のドラマを24時間放送'),
-('映画・無料', '人気映画を無料でお届け'),
-('ニュースch', '最新ニュースを随時お届け'),
-('スポーツch', 'スポーツ中継・ハイライト専門チャンネル');
 
 INSERT INTO time_slots (channel_id, program_id, start_time, end_time) VALUES
 (1, 1, '2026-05-10 20:00:00', '2026-05-10 20:30:00'), -- アニメch / 鬼滅の刃
