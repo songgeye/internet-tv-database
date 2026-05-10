@@ -1,16 +1,10 @@
-INSERT INTO channels (name, description) VALUES
-('Channel 1', 'Description 1'),
-('Channel 2', 'Description 2'),
-('Channel 3', 'Description 3');
-
-INSERT INTO time_slots (channel_id, program_id, start_time, end_time) VALUES
-(1, 1, '2026-05-10 20:00:00', '2026-05-10 20:30:00'), -- アニメch / 鬼滅の刃
-(1, 2, '2026-05-10 20:30:00', '2026-05-10 21:00:00'), -- アニメch / 進撃の巨人
-(2, 4, '2026-05-10 21:00:00', '2026-05-10 22:00:00'), -- ドラマch / 半沢直樹
-(3, 3, '2026-05-10 19:00:00', '2026-05-10 20:30:00'), -- 映画ch  / となりのトトロ
-(4, 5, '2026-05-10 19:00:00', '2026-05-10 19:30:00'), -- ニュースch / NHKニュース7
-(5, 6, '2026-05-10 22:00:00', '2026-05-10 23:00:00'), -- スポーツch / ワールドカップ特集
-(1, 1, '2026-05-11 20:00:00', '2026-05-11 20:30:00'); -- アニメch / 鬼滅の刃（再放送）
+INSERT INTO genres (name) VALUES
+('アニメ'),
+('ドラマ'),
+('映画'),
+('ニュース'),
+('スポーツ'),
+('バラエティ');
 
 INSERT INTO programs (title, description, is_series) VALUES
 ('鬼滅の刃',       '竈門炭治郎が妹を救うために鬼と戦う物語',             1),
@@ -19,6 +13,15 @@ INSERT INTO programs (title, description, is_series) VALUES
 ('半沢直樹',       '銀行員・半沢直樹が巨大な陰謀に立ち向かう痛快ドラマ', 1),
 ('NHKニュース7',   '国内外の最新ニュースをお届けするニュース番組',        0),
 ('ワールドカップ特集', 'サッカーワールドカップの試合をお届けするスポーツ番組', 0);
+
+INSERT INTO program_genres (program_id, genre_id) VALUES
+(1, 1), -- 鬼滅の刃 → アニメ
+(2, 1), -- 進撃の巨人 → アニメ
+(3, 1), -- となりのトトロ → アニメ
+(3, 3), -- となりのトトロ → 映画
+(4, 2), -- 半沢直樹 → ドラマ
+(5, 4), -- NHKニュース7 → ニュース
+(6, 5); -- ワールドカップ特集 → スポーツ
 
 INSERT INTO seasons (program_id, season_number) VALUES
 (1, 1), -- 鬼滅の刃 シーズン1
@@ -41,22 +44,19 @@ INSERT INTO episodes (season_id, episode_number, title, description, duration_se
 (6, NULL, '2026年5月10日放送',  '本日の国内外主要ニュース',                     1800, '2026-05-10',  80000),
 (7, NULL, '決勝戦ハイライト',   'ワールドカップ決勝戦の全ゴールをお届け',       3600, '2026-05-09', 300000);
 
-INSERT INTO genres (name) VALUES
-('アニメ'),
-('ドラマ'),
-('映画'),
-('ニュース'),
-('スポーツ'),
-('バラエティ');
+INSERT INTO channels (name, description) VALUES
+('Channel 1', 'Description 1'),
+('Channel 2', 'Description 2'),
+('Channel 3', 'Description 3');
 
-INSERT INTO program_genres (program_id, genre_id) VALUES
-(1, 1), -- 鬼滅の刃 → アニメ
-(2, 1), -- 進撃の巨人 → アニメ
-(3, 1), -- となりのトトロ → アニメ
-(3, 3), -- となりのトトロ → 映画
-(4, 2), -- 半沢直樹 → ドラマ
-(5, 4), -- NHKニュース7 → ニュース
-(6, 5); -- ワールドカップ特集 → スポーツ
+INSERT INTO time_slots (channel_id, program_id, start_time, end_time) VALUES
+(1, 1, '2026-05-10 20:00:00', '2026-05-10 20:30:00'), -- アニメch / 鬼滅の刃
+(1, 2, '2026-05-10 20:30:00', '2026-05-10 21:00:00'), -- アニメch / 進撃の巨人
+(2, 4, '2026-05-10 21:00:00', '2026-05-10 22:00:00'), -- ドラマch / 半沢直樹
+(3, 3, '2026-05-10 19:00:00', '2026-05-10 20:30:00'), -- 映画ch  / となりのトトロ
+(4, 5, '2026-05-10 19:00:00', '2026-05-10 19:30:00'), -- ニュースch / NHKニュース7
+(5, 6, '2026-05-10 22:00:00', '2026-05-10 23:00:00'), -- スポーツch / ワールドカップ特集
+(1, 1, '2026-05-11 20:00:00', '2026-05-11 20:30:00'); -- アニメch / 鬼滅の刃（再放送）
 
 INSERT INTO slot_episode_views (time_slot_id, episode_id, views) VALUES
 (1, 1,  12000), -- アニメch 鬼滅の刃 第1話
