@@ -45,9 +45,11 @@ INSERT INTO episodes (season_id, episode_number, title, description, duration_se
 (7, NULL, '決勝戦ハイライト',   'ワールドカップ決勝戦の全ゴールをお届け',       3600, '2026-05-09', 300000);
 
 INSERT INTO channels (name, description) VALUES
-('Channel 1', 'Description 1'),
-('Channel 2', 'Description 2'),
-('Channel 3', 'Description 3');
+('アニメch',   'アニメ専門チャンネル'),
+('ドラマch',   '国内外のドラマを24時間放送'),
+('映画・無料', '人気映画を無料でお届け'),
+('ニュースch', '最新ニュースを随時お届け'),
+('スポーツch', 'スポーツ中継・ハイライト専門チャンネル');
 
 INSERT INTO time_slots (channel_id, program_id, start_time, end_time) VALUES
 (1, 1, '2026-05-10 20:00:00', '2026-05-10 20:30:00'), -- アニメch / 鬼滅の刃

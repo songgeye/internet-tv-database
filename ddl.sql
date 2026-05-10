@@ -45,7 +45,7 @@ CREATE TABLE seasons (
 CREATE TABLE episodes (
     id BIGINT NOT NULL AUTO_INCREMENT,
     season_id BIGINT NOT NULL,
-    episode_number INT NOT NULL,
+    episode_number INT,
     title VARCHAR(200) NOT NULL,
     description TEXT,
     duration_seconds INT NOT NULL,
