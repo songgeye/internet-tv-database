@@ -9,13 +9,14 @@ ORDER BY id;
 -- あるチャンネルの番組表(番組枠一覧)を取得
 SELECT
   ts.id           AS time_slot_id,
-  ch.id
+  ch.id,
   ts.start_time,
   ts.end_time,
   p.id            AS program_id,
   p.title         AS program_title,
   p.is_series
 FROM time_slots ts
+JOIN channels ch ON ch.id = ts.channel_id
 JOIN programs p ON p.id = ts.program_id
 WHERE ts.channel_id = 1
 ORDER BY ts.start_time;
@@ -41,21 +42,6 @@ JOIN program_genres pg ON pg.program_id = p.id
 JOIN genres g          ON g.id = pg.genre_id
 WHERE p.id = 1
 GROUP BY p.id, p.title, p.description, p.is_series;
-
--- 番組に紐づくエピソード一覧を取得
-SELECT
-  e.id               AS episode_id,
-  s.season_number,
-  e.episode_number,
-  e.title            AS episode_title,
-  e.description,
-  e.duration_seconds,
-  e.release_date,
-  e.total_views
-FROM episodes e
-JOIN seasons s ON s.id = e.season_id
-WHERE s.program_id = 1
-ORDER BY s.season_number, e.episode_number;
 
 -- 番組に紐づくエピソード一覧を取得
 SELECT

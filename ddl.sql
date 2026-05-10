@@ -17,6 +17,16 @@ CREATE TABLE programs (
     INDEX idx_programs_title (title)
 );
 
+-- チャンネルテーブル
+CREATE TABLE channels (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    PRIMARY KEY (id),
+    INDEX idx_channels_name (name),
+    UNIQUE KEY uk_channels_name (name)
+);
+
 -- 番組ジャンル中間テーブル
 CREATE TABLE program_genres (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -54,16 +64,6 @@ CREATE TABLE episodes (
     PRIMARY KEY (id),
     INDEX idx_episodes_season_id (season_id),
     FOREIGN KEY (season_id) REFERENCES seasons(id)
-);
-
--- チャンネルテーブル
-CREATE TABLE channels (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    description TEXT,
-    PRIMARY KEY (id),
-    INDEX idx_channels_name (name),
-    UNIQUE KEY uk_channels_name (name)
 );
 
 -- 時間枠テーブル
